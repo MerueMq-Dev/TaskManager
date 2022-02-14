@@ -51,7 +51,7 @@ namespace TaskManager.Controllers
 
         //change one project
         [HttpPut("{id}")]
-        public IResult Put(long id, [FromBody] ProjectEntity projectData)
+        public IResult Put(long id, ProjectEntity projectData)
         {
             return _projectService.ChangeProjectById(id, projectData);
         }
