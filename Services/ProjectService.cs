@@ -69,7 +69,8 @@ namespace TaskManager.Services
         }
 
 
-        // 
+       // The method accepts a project ID and a project object
+       // and changes the data in the database according to them
         public IResult ChangeProjectById(long id, ProjectEntity projectData)
         {
             var listOfTasks = _appContext.Tasks.ToList();
