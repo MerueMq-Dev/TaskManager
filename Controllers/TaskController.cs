@@ -20,7 +20,7 @@ namespace TaskManager.Controllers
         }
 
 
-        //change one task from project
+        //change one task from the project
         [HttpPut("/{projectid}/{taskid}")]
         public IResult PutTask(long projectid, long taskid, TaskEntity taskData)
         {
@@ -28,8 +28,7 @@ namespace TaskManager.Controllers
         }
 
 
-
-        //get one task from project
+        //get one task from the project
         [HttpGet("/{projectId}/{taskId}")]
         public IResult GetTask(long projectId, long taskId)
         {
@@ -37,9 +36,16 @@ namespace TaskManager.Controllers
             return _projectTaskService.GetTaskById(projectId, taskId);
         }
 
+        //get all tasks from the project
+
+        [HttpGet("pr/{projectid}")]
+        public IResult GetAllTask(long projectid)
+        {
+            return _projectTaskService.GetAllTaskFromProject(projectid);
+        }
 
 
-        //delete one task from project
+        //delete one task from the project
         [HttpDelete("/{projectid}/{taskid}")]
         public IResult DeleteTask(long projectid, long taskid)
         {
@@ -49,13 +55,14 @@ namespace TaskManager.Controllers
 
         }
 
-
         //Add task to the project
         [HttpPut("{id}")]
         public IResult Put(long id, TaskEntity dataTask)
         {
             return _projectTaskService.AddTaskToProject(id, dataTask);
         }
+
+
     }
 
 }

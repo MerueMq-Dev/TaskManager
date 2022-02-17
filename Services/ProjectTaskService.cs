@@ -99,5 +99,26 @@ namespace TaskManager.Services
 
             return Results.Json(project);
         }
+
+        public IResult GetAllTaskFromProject(long projectId)
+        {
+            var listOfTasks = _appContext.Tasks.ToList();
+            var project = _appContext.Projects.FirstOrDefault(p => p.Id == projectId);
+            if (project == null) return Results.NotFound(new { message = "Project Not Found" });
+            var listTasksFromDb = project.ProjectTasks.ToList();
+            if (listTasksFromDb == null)
+            {
+                return Results.NotFound(new { message = "Task Not Found" });
+
+            } else if(listTasksFromDb.Count == 0)
+            {
+                return Results.NotFound(new { message = "There are no tasks in the project" });
+            }
+            else
+            {
+                return Results.Json(listTasksFromDb);
+            }
+
+        }
     }
 }

@@ -12,5 +12,7 @@ namespace TaskManager.Services
         public IResult RemoveTaskById(long projectid, long taskid);
 
         public IResult AddTaskToProject(long id, TaskEntity dataTask);
+
+        public IResult GetAllTaskFromProject(long projectId);
     }
 }
