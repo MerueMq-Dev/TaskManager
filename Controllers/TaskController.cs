@@ -38,7 +38,7 @@ namespace TaskManager.Controllers
 
         //get all tasks from the project
 
-        [HttpGet("pr/{projectid}")]
+        [HttpGet("project/{projectid}")]
         public IResult GetAllTask(long projectid)
         {
             return _projectTaskService.GetAllTaskFromProject(projectid);
